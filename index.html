@@ -1,13 +1,32 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0>
-    <style> body {padding: 0; margin: 0;} </style>
-    <script src="p5.min.js"></script>
-    <script src="addons/p5.sound.min.js"></script>
-    <script src="sketch.js"></script>
-  </head>
-  <body>
-  </body>
+<html><head>
+		 
+    	 <meta charset="utf-8">
+    	 <meta name="viewport" width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0>
+    	 <script src="p5.min.js"></script>
+    	 <script src="addons/p5.geolocation.js"></script>
+   	 	 <script src="addons/mappa.js" type="text/javascript"></script>
+   	 	 <script src="sketch.js"></script>
+    	 <style>
+    		 body {
+    			 padding: 0;
+    			 margin: 0;
+    		 }
+			 #PresentUI {
+				 position: absolute;
+				 width: 10vh;
+				 height: 10vh;
+				 transform: translate(-50%);
+				 left: 50%;
+				 bottom: 10%;
+				 background-color: darkred;
+				 z-index: 10;
+				 cursor: pointer;
+				 border-radius: 100%;
+			 }
+    	 </style>
+  	</head>
+	<body>
+		<div id="PresentUI" onclick="GivePresent()"></div>
+	</body>
 </html>

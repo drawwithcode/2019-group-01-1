@@ -1,11 +1,96 @@
-function preload(){
-  // put preload code here
+//create a map and load it from mapbox
+var myMap;
+var canvas;
+var mappa = new Mappa('MapboxGL', "pk.eyJ1IjoiYW5kcmVhYmVuZWRldHRpIiwiYSI6ImNqNWh2eGh3ejFqOG8zM3BrZjRucGZkOGEifQ.SmdBpUoSe3s0tm-OTDFY9Q");
+
+//define the coordinates of polimi
+var poliLat = 43.872256;
+var poliLon = 10.2490112;
+
+//define that when the maps appears it will be centered on the polimi and the style of the map
+var options = {
+  	lat: poliLat,
+  	lng: poliLon,
+  	zoom: 20,
+  	style: 'mapbox://styles/mapbox/streets-v9',
+    interactive: true
+}
+
+//define the position of the user and it's coordinates
+var myLat;
+var myLon;
+var position;
+
+//Define all the other variables
+var regali = [];
+var i = 0;
+var presentImage;
+
+//load the user position
+function preload() {
+  	position = getCurrentPosition();
+	presentimage = loadImage("./assets/png/regalo.png");
 }
 
 function setup() {
-  // put setup code here
+  	canvas = createCanvas(windowWidth, windowHeight);
+    
+    //define that the position of the user will define his lat and his lon
+	myLat = position.latitude;
+	myLon = position.longitude;
+	
+	//Change position of the circle on position change
+	watchPosition(Movement, 500);
+    
+    options.lat = myLat;
+    options.lng = myLon;
+
+	//define that the setup of the project will be the map
+	myMap = mappa.tileMap(options);
+	myMap.overlay(canvas);  
 }
 
 function draw() {
-  // put drawing code here
+	clear();
+
+  	//draw a circle where the user is
+	push();
+  	var myPosition = myMap.latLngToPixel(myLat, myLon);
+  	fill(255, 0, 0);
+  	noStroke();
+  	ellipse(myPosition.x, myPosition.y, 20);
+	pop();
+	
+	//Display Presents
+	for (var j = 0; j < regali.length; j++) {
+      regali[j].display();
+    }
+    
+    options.lat = 43.872256;
+    options.lng = 10.2490112;
+}
+
+function GivePresent(){
+	regali[i] = new Regalo();
+	i++;
+}
+
+function Regalo(){
+	this.x = myLat;
+	this.y = myLon;
+	this.regalo = presentImage;
+	
+	this.display = function(){
+		push();
+        fill("blue");
+        noStroke();
+		ellipse(this.x, this.y, 20);
+        console.log(this.x, this.y);
+		pop();
+	}
+}
+
+function Movement(posizione) {
+	myLat = posizione.latitude;
+	myLon = posizione.longitude;
 }
