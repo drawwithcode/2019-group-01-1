@@ -3,16 +3,16 @@ var myMap;
 var canvas;
 var mappa = new Mappa('MapboxGL', "pk.eyJ1IjoiYW5kcmVhYmVuZWRldHRpIiwiYSI6ImNqNWh2eGh3ejFqOG8zM3BrZjRucGZkOGEifQ.SmdBpUoSe3s0tm-OTDFY9Q");
 
-//define the coordinates of polimi
-var poliLat = 43.872256;
-var poliLon = 10.2490112;
-
-//define that when the maps appears it will be centered on the polimi and the style of the map
+//define the style, zoom and rotation of the map
 var options = {
-  	lat: poliLat,
-  	lng: poliLon,
+  	lat: 0,
+  	lng: 0,
   	zoom: 20,
-  	style: 'mapbox://styles/mapbox/streets-v9',
+    maxZoom: 20.5,
+    minZoom: 18,
+    pitch: 40,
+    bearing: -60,
+  	style: 'mapbox://styles/mapbox/light-v10',
     interactive: true
 }
 

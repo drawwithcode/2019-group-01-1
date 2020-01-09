@@ -1341,9 +1341,12 @@ var MapboxGL = function (_TileMap) {
         bearing: this.options.bearing || 0,
         pitch: this.options.pitch || 0,
         interactive: this.options.interactive || false,
+        
         renderWorldCopies: true && this.options.renderWorldCopies,
         maxBounds: this.options.maxBounds || undefined
       });
+        
+      map.dragPan.disable();
 
       map.getCanvasContainer().appendChild(this.canvas);
       this.map = map;
