@@ -1341,12 +1341,10 @@ var MapboxGL = function (_TileMap) {
         bearing: this.options.bearing || 0,
         pitch: this.options.pitch || 0,
         interactive: this.options.interactive || false,
-        
+
         renderWorldCopies: true && this.options.renderWorldCopies,
         maxBounds: this.options.maxBounds || undefined
       });
-        
-      map.dragPan.disable();
 
       map.getCanvasContainer().appendChild(this.canvas);
       this.map = map;
@@ -1354,9 +1352,22 @@ var MapboxGL = function (_TileMap) {
       if (this.options.opacity) {
         document.getElementsByClassName('mapboxgl-canvas')[0].style.opacity = this.options.opacity;
       }
+
+			// Add geolocate control to the map.
+			map.addControl(
+				new mapboxgl.GeolocateControl({
+					positionOptions: {
+						enableHighAccuracy: true
+					},
+					trackUserLocation: true,
+					showUserLocation: false
+				})
+			);
+
+			//load map
       map.on('load', function () {
         var layers = map.getStyle().layers;
- 
+
         var labelLayerId;
           for (var i = 0; i < layers.length; i++) {
             if (layers[i].type === 'symbol' && layers[i].layout['text-field']) {
@@ -1364,7 +1375,7 @@ var MapboxGL = function (_TileMap) {
               break;
             }
           }
- 
+
           map.addLayer(
             {
               'id': '3d-buildings',
@@ -1375,7 +1386,7 @@ var MapboxGL = function (_TileMap) {
               'minzoom': 15,
               'paint': {
                 'fill-extrusion-color': '#aaa',
- 
+
                 // use an 'interpolate' expression to add a smooth transition effect to the
                 // buildings as the user zooms in
                 'fill-extrusion-height': [
