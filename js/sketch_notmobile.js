@@ -9,8 +9,8 @@ let snowflakes = [];
 var menuillustration, logo, lobster;
 
 function preload(){
-  menuillustration = loadImage("../assets/png/desktop.png");
-  logo = loadImage("../assets/png/logo.png");
+  menuillustration = loadImage("./assets/png/desktop.png");
+  logo = loadImage("./assets/png/logo.png");
 }
 
 function setup(){
