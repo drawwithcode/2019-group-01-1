@@ -22,6 +22,13 @@ function draw(){
   clear();
   background("#b3f1f4");
 
+  // Draw FPS (rounded to 2 decimal places) at the bottom left of the screen
+  let fps = frameRate();
+  fill(255);
+  stroke(0);
+  textSize(width/30);
+  text("FPS: " + fps.toFixed(2), 10, height - 10);
+
   //create distance variable for the Play button
   var d = dist(mouseX, mouseY, windowWidth/2-10, windowHeight/3-20);
 

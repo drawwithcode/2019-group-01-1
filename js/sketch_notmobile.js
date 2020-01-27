@@ -24,17 +24,25 @@ function draw(){
   //Show Illustration
   push();
   imageMode(CENTER);
-  image(menuillustration, windowWidth/2, windowHeight/2, width, width/2);
+  image(menuillustration, windowWidth/2, windowHeight/2, width/2, width/4);
 
   //Show Logo
-  image(logo, windowWidth/2, windowHeight/8, width/1.2, width/2.4);
+  image(logo, windowWidth/2, windowHeight*3/16, width/3, width/6);
+  pop();
+
+  //Create text
+  push();
+  textAlign(CENTER);
+  textSize(width/70);
+  fill("#3499fe");
+  text("Connect your mobile device to use this WebApp!", width/2, height*7/8);
   pop();
 
   //Create snowflakes for added Christmas
   let t = frameCount / 60;
 
   //create a random number of snowflakes each frame
-  for (let i = 0; i < random(1); i++) {
+  for (let i = 0; i < random(0.5); i++) {
     snowflakes.push(new snowflake()); // append snowflake object
   }
 
