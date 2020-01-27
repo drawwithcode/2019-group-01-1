@@ -7,3 +7,34 @@ body {
   margin: 0;
   position: relative;
 }
+
+#MenuPresent{
+  position: absolute;
+  transform: translate(-50%,-50%);
+  left: 50%;
+  top: 50%;
+  background-color: white;
+  height: 50vh;
+  width: 80vw;
+  opacity: 0;
+  transition: 0.5s;
+}
+
+.PresentButton{
+  width: 33%;
+  z-index: 10;
+  opacity: 1;
+  transition: 0.5s;
+}
+
+.Canvas{
+  transition: 0.5s;
+}
+
+.CanvasBlur{
+  filter: blur(8px);
+}
+
+.question{
+  font-size: 4vw;
+}
