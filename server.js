@@ -23,11 +23,15 @@ function newConnection(socket){
 	console.log('socket:', socket.id);
 
 	//define what to do on different kind of messages
-	socket.on('mouse', mouseMessage);
+	socket.on('present', presentAppear);
+	socket.on('closing', stopIcon);
 
-	function mouseMessage(data){
-		socket.broadcast.emit('mouseBroadcast', data);
-		console.log(data);
+	function presentAppear(data){
+		socket.broadcast.emit('presentBroadcast', data);
+	}
+
+	function stopIcon(stopIcon){
+		socket.broadcast.emit('Closing', stopIcon);
 	}
 }
 
