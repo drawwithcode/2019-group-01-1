@@ -19,6 +19,7 @@
   "homepage": "https://github.com/drawwithcode/2019-group-01-1#readme",
   "dependencies": {
     "Express": "^3.0.1",
+    "express": "^4.17.1",
     "socket.io": "^2.3.0"
   }
 }
