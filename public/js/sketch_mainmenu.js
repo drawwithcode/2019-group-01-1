@@ -37,15 +37,15 @@ function draw(){
   ellipse(windowWidth/2, windowHeight/3, windowWidth/2.5);
   if(mouseIsPressed && d < windowWidth/5){
     fill("#ff0160");
-    ellipse(windowWidth/2-5, windowHeight/3-10, windowWidth/2.5);
+    ellipse(windowWidth/2, windowHeight/3, windowWidth/2.5);
     fill(255);
-    text("Play", width/2-5, windowHeight/3+20);
+    text("Play", width/2-2, windowHeight/3+12);
     window.location.href = "game.html";
   } else{
     fill("#ff0160");
-    ellipse(windowWidth/2-10, windowHeight/3-20, windowWidth/2.5);
+    ellipse(windowWidth/2-5, windowHeight/3-10, windowWidth/2.5);
     fill(255);
-    text("Play", width/2-10, windowHeight/3+10);
+    text("Play", width/2-5, windowHeight/3+5);
   }
   pop();
 
@@ -62,7 +62,7 @@ function draw(){
   let t = frameCount / 60;
 
   //create a random number of snowflakes each frame
-  for (let i = 0; i < random(1); i++) {
+  for (let i = 0; i < random(0.5); i++) {
     snowflakes.push(new snowflake()); // append snowflake object
   }
 

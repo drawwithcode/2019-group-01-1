@@ -25,6 +25,7 @@ function newConnection(socket){
 	//define what to do on different kind of messages
 	socket.on('present', presentAppear);
 	socket.on('closing', stopIcon);
+	socket.on('position', importedPosition);
 
 	function presentAppear(data){
 		socket.broadcast.emit('presentBroadcast', data);
@@ -32,6 +33,10 @@ function newConnection(socket){
 
 	function stopIcon(stopIcon){
 		socket.broadcast.emit('Closing', stopIcon);
+	}
+
+	function importedPosition(impos){
+		socket.broadcast.emit('imposition', impos);
 	}
 }
 
