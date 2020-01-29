@@ -76,7 +76,7 @@ function setup() {
 
   //Create present button
   givepresent = createImg("assets/gif/caricamento.gif");
-  givepresent.position(width / 2 - 50, height / 1.3);
+  givepresent.position(width / 2 - width/8, height / 1.3);
   givepresent.addClass("PresentButton");
 }
 
@@ -91,7 +91,6 @@ function draw() {
   ellipse(myPosition.x, myPosition.y, 20);
   pop();
 
-  //
   var impos = {
     x: myLat,
     y: myLon
@@ -186,13 +185,13 @@ function addPosition(impos) {
 function Imposition(impos) {
   var rx = impos.x;
   var ry = impos.y;
+  var g = random(255);
+  var b = random(255);
 
   this.display = function() {
     var posizione = myMap.latLngToPixel(rx, ry);
     this.x = posizione.x;
     this.y = posizione.y;
-    var g = random(255);
-    var b = random(255);
     fill(0, g, b, 15);
     stroke(0, g, b);
     ellipse(this.x, this.y, 20);
