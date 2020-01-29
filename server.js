@@ -13,6 +13,7 @@ app.use(express.static('public'));
 var socket = require('socket.io');
 // create a socket connection
 var io = socket(server);
+
 // define which function should be called
 // when a new connection is opened from client
 io.on('connection', newConnection);

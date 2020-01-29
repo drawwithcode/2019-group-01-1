@@ -3,14 +3,15 @@
 // =============================================================
 
 //Define all the variables for the preload (images and position)
-var position, presenticon;
+var position, yourpresent, importedpresent;
 
 //Add socket.io variable
 var socket;
 
 function preload() {
   position = getCurrentPosition();
-  presenticon = loadImage("./assets/png/presenticon.png");
+  yourpresent = loadImage("./assets/png/yourpresent.png");
+  importedpresent = loadImage("./assets/png/importedpresent.png");
 }
 
 //create a map and load it from mapbox
@@ -24,8 +25,8 @@ var options = {
   lng: 0,
   zoom: 20,
   maxZoom: 18,
-  minZoom: 12,
-  style: 'mapbox://styles/ellllaas/ck5pegaee60561ijyof7sstlx',
+  minZoom: 14,
+  style: 'mapbox://styles/ellllaas/ck5pegaee60561ijyof7sstlx?optimize=true',
   interactive: true
 }
 
@@ -33,10 +34,14 @@ var options = {
 var myLat;
 var myLon;
 
-//Define the arrays that will hold all the presents
+//Define arrays holding presents
 var regali = [];
 var regalimported = [];
+
+//Define arrays holding positions
 var imposition = [];
+
+//Define index for the arrays
 var i = 0;
 var t = 0;
 var o = 0;
@@ -235,7 +240,7 @@ function Regalo() {
     if (iconshow === 0) {
       push();
       imageMode(CENTER);
-      icon = image(presenticon, this.x, this.y, 50, 50);
+      icon = image(yourpresent, this.x, this.y, 60, 60);
       pop();
     }
   }
@@ -292,7 +297,7 @@ function RegaloImported(data) {
     if (iconshow === 0) {
       push();
       imageMode(CENTER);
-      icon = image(presenticon, this.x, this.y, 50, 50);
+      icon = image(importedpresent, this.x, this.y, 60, 60);
       pop();
     }
   }

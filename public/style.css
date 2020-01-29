@@ -38,3 +38,32 @@ body {
 .question{
   font-size: 4vw;
 }
+
+#upillustration{
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 50vw;
+  z-index: 21;
+  pointer-events: none;
+}
+
+#leftillustration{
+  position: absolute;
+  left:0;
+  transform: translate(-55%,40%);
+  width: 60vw;
+  height: 120vw;
+  z-index: 21;
+  pointer-events: none;
+}
+
+#rightillustration{
+  position: absolute;
+  right:0;
+  transform: translate(55%,40%);
+  width: 60vw;
+  height: 120vw;
+  z-index: 21;
+  pointer-events: none;
+}
