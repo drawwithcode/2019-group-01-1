@@ -5,7 +5,7 @@ This repository is the starting point of the assignments given in the elective c
 Politecnico di Milano - Scuola del Design  
 Faculty: Michele Mauri, Andrea Benedetti
 
-!.[.].(https://github.com/drawwithcode/2019-group-01-1/blob/master/addons/cover.jpg)  
+!.[MONO].(https://github.com/drawwithcode/2019-group-01-1/blob/master/addons/cover.jpg)  
 
 **The Idea**  
 The projects starts with the idea of allowing an interaction between the users in an online space, along with the attempt of making it a pleasent experience that will make the world a better place.
