@@ -47,5 +47,4 @@ Every time he reconnects he will have to start over.
 * Davide Perucchini
 
 >CREDITS  
-
 >illustrations by [undraw.co](https://undraw.co/)
