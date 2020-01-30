@@ -175,16 +175,18 @@ function draw() {
 function mouseClicked() {
 
   if(mouseX > width*2.85/8 && mouseX < width * 5.3/8 && mouseY > height*4.4/8 && mouseY < height*5.5/8){
-    console.log("manuelita");
+    console.log(menu);
+    console.log(menuOn);
   }
   //Send Menu disappears when the button is pressed
-  if (menu === 1 && menuOn === true && mouseX > width*2.85/8 && mouseX < width * 5.3/8 && mouseY > height*4.4/8 && mouseY < height*5.5/8) {
+  if (menu === 1 && mouseX > width*2.85/8 && mouseX < width * 5.3/8 && mouseY > height*4.4/8 && mouseY < height*5.5/8) {
     GivePresent();
     menu = 0;
     $("#MenuPresent").css({"zIndex": "0", "opacity": "0"});
     $("#illustration").css({"pointerEvents": "none"});
     menuOn = false;
     givepresent.style("opacity", "1", "pointerEvents", "auto");
+    console.log("ciao eli come va????");
   }
 
   if(menu === 1 && menuOn === true){
