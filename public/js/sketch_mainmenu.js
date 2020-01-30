@@ -120,13 +120,13 @@ this.touchMoved = function() {
 
 $( document ).ready(function(){
   setTimeout(function(){$("#g").addClass("animateload");}, 1600);
-  setTimeout(function(){$("#r").addClass("animateload");}, 1800);
-  setTimeout(function(){$("#b").addClass("animateload");}, 2000);
+  setTimeout(function(){$("#b").addClass("animateload");}, 1800);
+  setTimeout(function(){$("#r").addClass("animateload");}, 2000);
 });
 
 function animate(){
-  setTimeout(function(){$("#b").addClass("animategoto");}, 200);
-  setTimeout(function(){$("#r").addClass("animategoto");}, 400);
+  setTimeout(function(){$("#r").addClass("animategoto");}, 200);
+  setTimeout(function(){$("#b").addClass("animategoto");}, 400);
   setTimeout(function(){$("#g").addClass("animategoto");}, 600);
   setTimeout(function(){window.location.href = "game.html";}, 1600);
 }

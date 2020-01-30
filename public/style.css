@@ -36,7 +36,7 @@ body {
 }
 
 #r{
-  background-color: #B3000C;
+  background-color: #F8B229;
 }
 
 .animateload{
@@ -98,7 +98,6 @@ body {
   transform: translate(-50%,-50%);
   background-size: contain;
   background-repeat: no-repeat;
-  background-image:  url(assets/gif/illustration1.gif);
 }
 
 .PresentButton{

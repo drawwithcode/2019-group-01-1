@@ -164,7 +164,7 @@ function draw() {
       $("#QuestionName").css("opacity", "0");
       $("#Send").css("opacity", "0");
       $("#answer1").css("opacity", "1");
-      //$("#illustration").css({"pointerEvents": "auto", "opacity": "1", "background-image": "url(assets/gif/illustration"+round(random(2)+1)+".gif)"});
+      $("#illustration").css({"pointerEvents": "auto", "opacity": "1", "background-image": "url(assets/gif/illustration"+round(random(2)+1)+".gif)"});
       menuOn = true;
     }
     pop();
@@ -309,9 +309,7 @@ function Regalo() {
 function leavePresent(request) {
   regalimported = [];
   database = loadJSON("../presents.json");
-  console.log("uee");
   setTimeout(function(){
-    console.log("uee2");
     for (var t = 0; t < database.regali.length; t++) {
       var data = {
         x: database.regali[t].x,
@@ -394,6 +392,6 @@ this.touchMoved = function() {
 
 $( document ).ready(function(){
   setTimeout(function(){$("#g").addClass("animateload");}, 1600);
-  setTimeout(function(){$("#r").addClass("animateload");}, 1800);
-  setTimeout(function(){$("#b").addClass("animateload");}, 2000);
+  setTimeout(function(){$("#b").addClass("animateload");}, 1800);
+  setTimeout(function(){$("#r").addClass("animateload");}, 2000);
 });
