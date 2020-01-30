@@ -171,7 +171,7 @@ function draw() {
 
   push();
   fill(255);
-  rect(width*2.85/8, height*4.4/8, width*2.45/8, height*1.1/8);
+  //rect(width*2.85/8, height*4.4/8, width*2.45/8, height*1.1/8);
   pop();
 }
 

@@ -1,3 +1,7 @@
+/*///////////*/
+/*   FONTS   */
+/*///////////*/
+
 @font-face {
   font-family: Lobster;
   src: url(./assets/fonts/Lobster-Regular.ttf);
@@ -7,6 +11,10 @@
   font-family: Lato;
   src: url(./assets/fonts/Lato-Regular.ttf);
 }
+
+/*///////////*/
+/*   GLOBAL  */
+/*///////////*/
 
 html, body {
   overflow: hidden;
@@ -18,15 +26,8 @@ body {
   position: relative;
 }
 
-@media only screen and (orientation:landscape){
-  body {
-    width: 100vh;
-    transform: rotate(90deg);
-  }
-}
-
 /*/////////////////////////////*/
-/*       MAIN MENU CSS         */
+/*          MAIN MENU          */
 /*/////////////////////////////*/
 
 .loaderdivs{
@@ -53,14 +54,14 @@ body {
 
 #instructions{
   position: absolute;
-  font-size: 3vh;
+  font-size: 2vh;
   text-align: center;
   font-family: Lato;
   color: #3499fe;
   left:50%;
   transform: translate(-50%);
   bottom: 5vh;
-  width: 80vw;
+  width: 60vw;
   height: 20vh;
 }
 
@@ -83,7 +84,7 @@ body {
 }
 
 /*/////////////////////////////*/
-/*          GAME CSS           */
+/*            MAP              */
 /*/////////////////////////////*/
 
 #MenuPresent{
@@ -203,26 +204,6 @@ body {
   z-index: 21;
   pointer-events: none;
 }
-
-/*#leftillustration{
-  position: absolute;
-  left:0;
-  transform: translate(-55%,40%);
-  width: 60vw;
-  height: 120vw;
-  z-index: 21;
-  pointer-events: none;
-}
-
-#rightillustration{
-  position: absolute;
-  right:0;
-  transform: translate(55%,40%);
-  width: 60vw;
-  height: 120vw;
-  z-index: 21;
-  pointer-events: none;
-}*/
 
 #Send{
   position:relative;
