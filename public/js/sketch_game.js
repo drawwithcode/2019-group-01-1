@@ -173,6 +173,10 @@ function draw() {
 }
 
 function mouseClicked() {
+
+  if(mouseX > width/4 && mouseX < width*3/4){
+    console.log("manuelita");
+  }
   //Send Menu disappears when the button is pressed
   if (menu === 1 && menuOn === true && mouseX > width*2.85/8 && mouseX < width * 5.3/8 && mouseY > height*4.4/8 && mouseY < height*5.5/8) {
     GivePresent();
