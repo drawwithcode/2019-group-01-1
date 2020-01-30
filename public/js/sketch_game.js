@@ -2,11 +2,11 @@
 // =                          GAME                             =
 // =============================================================
 
+//Define utility variables
+var socket, canvas, givepresent, alfa = 255;
+
 //Define all the variables for the preload (images and position)
 var position, yourpresent, importedpresent, database, lobster;
-
-//Add socket.io variable
-var socket;
 
 function preload() {
   position = getCurrentPosition();
@@ -18,7 +18,6 @@ function preload() {
 
 //create a map and load it from mapbox
 var myMap;
-var canvas;
 var mappa = new Mappa('MapboxGL', "pk.eyJ1IjoiZWxsbGxhYXMiLCJhIjoiY2sybWU2c3JhMGZudTNvcDB0MzIybjM1ZiJ9.QEanQ7AjFqMkaCCghI-qig");
 
 //define the style, zoom and rotation of the map
@@ -32,24 +31,15 @@ var options = {
   interactive: true
 }
 
-//define the position of the user and it's coordinates
-var myLat;
+var myLat; //define the position of the user and it's coordinates
 var myLon;
 
-//Define arrays holding presents
-var regali = [];
+var regali = []; //Define arrays holding sent and recieved presents
 var regalimported = [];
+var i = 0; //Define index for your sent presents
 
-//Define index for the arrays
-var i = 0;
-
-var pressed = 0;
-var givepresent;
-
-//Boolean that stops interactions when a menu is open
-var menu = 0;
+var menu = 0; //Define Variables that stops interactions when a menu is open
 var menuOn = false;
-var alfa = 255;
 
 function setup() {
   canvas = createCanvas(windowWidth, windowHeight);
@@ -172,12 +162,7 @@ function draw() {
   }
 }
 
-function mouseClicked() {
-
-  if(mouseX > width*2.85/8 && mouseX < width * 5.3/8 && mouseY > height*4.4/8 && mouseY < height*5.5/8){
-    console.log(menu);
-    console.log(menuOn);
-  }
+function touchStarted(){
   //Send Menu disappears when the button is pressed
   if (menu === 1 && mouseX > width*2.85/8 && mouseX < width * 5.3/8 && mouseY > height*4.4/8 && mouseY < height*5.5/8) {
     GivePresent();
@@ -188,6 +173,14 @@ function mouseClicked() {
     givepresent.style("opacity", "1", "pointerEvents", "auto");
     console.log("ciao eli come va????");
   }
+
+  if(mouseX > width*2.85/8 && mouseX < width * 5.3/8 && mouseY > height*4.4/8 && mouseY < height*5.5/8){
+    console.log(menu);
+    console.log(menuOn);
+  }
+}
+
+function mouseClicked() {
 
   if(menu === 1 && menuOn === true){
     if(mouseY > height*3/4 || mouseY < height/4){
