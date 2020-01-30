@@ -171,16 +171,7 @@ function touchStarted(){
     $("#illustration").css({"pointerEvents": "none"});
     menuOn = false;
     givepresent.style("opacity", "1", "pointerEvents", "auto");
-    console.log("ciao eli come va????");
   }
-
-  if(mouseX > width*2.85/8 && mouseX < width * 5.3/8 && mouseY > height*4.4/8 && mouseY < height*5.5/8){
-    console.log(menu);
-    console.log(menuOn);
-  }
-}
-
-function mouseClicked() {
 
   if(menu === 1 && menuOn === true){
     if(mouseY > height*3/4 || mouseY < height/4){
