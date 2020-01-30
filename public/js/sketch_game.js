@@ -80,7 +80,7 @@ function setup() {
   myMap.overlay(canvas);
 
   //Create present button
-  givepresent = createImg("assets/gif/caricamento.gif");
+  givepresent = createImg("assets/gif/button.gif");
   givepresent.position(width / 2 - width/6, height / 1.3);
   givepresent.addClass("PresentButton");
 
