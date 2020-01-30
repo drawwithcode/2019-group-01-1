@@ -89,7 +89,7 @@ function setup() {
 
   //Create present button
   givepresent = createImg("assets/gif/caricamento.gif");
-  givepresent.position(width / 2 - width/8, height / 1.3);
+  givepresent.position(width / 2 - width/6, height / 1.3);
   givepresent.addClass("PresentButton");
 }
 
@@ -356,7 +356,7 @@ this.touchMoved = function() {
 // =============================================================
 
 $( document ).ready(function(){
-  setTimeout(function(){$("#g").addClass("animateload");}, 200);
-  setTimeout(function(){$("#r").addClass("animateload");}, 400);
-  setTimeout(function(){$("#b").addClass("animateload");}, 600);
+  setTimeout(function(){$("#g").addClass("animateload");}, 1000);
+  setTimeout(function(){$("#r").addClass("animateload");}, 1200);
+  setTimeout(function(){$("#b").addClass("animateload");}, 1400);
 });
