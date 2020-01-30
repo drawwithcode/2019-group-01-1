@@ -134,6 +134,11 @@ this.touchMoved = function() {
   return false;
 }
 
+//Ask permission on IOs s devices
+function touchEnded(event) {
+  DeviceOrientationEvent.requestPermission()
+}
+
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 }

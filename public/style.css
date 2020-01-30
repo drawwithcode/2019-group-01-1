@@ -196,15 +196,6 @@ body {
   pointer-events: none;
 }
 
-#upillustration2{
-  position: absolute;
-  left: 0;
-  width: 100vw;
-  height: 50vw;
-  z-index: 21;
-  pointer-events: none;
-}
-
 #Send{
   position:relative;
   top:4%;

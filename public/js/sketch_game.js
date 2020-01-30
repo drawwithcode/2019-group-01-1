@@ -170,10 +170,6 @@ function draw() {
   if (menu === 1 || menu === 2) {
     givepresent.style("opacity", "0", "pointerEvents", "none");
   }
-
-  push();
-  rect(width*2.85/8, height*4.4/8, width*2.45/8, height*1.1/8)
-  pop();
 }
 
 function mouseClicked() {
@@ -397,6 +393,11 @@ function Movement(posizione) {
 //Stops screen from being dragged
 this.touchMoved = function() {
   return false;
+}
+
+//Ask permission on IOs s devices
+function touchEnded(event) {
+  DeviceOrientationEvent.requestPermission()
 }
 
 // =============================================================
