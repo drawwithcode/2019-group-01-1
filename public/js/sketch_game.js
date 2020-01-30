@@ -172,6 +172,9 @@ function touchStarted(){
     menuOn = false;
     givepresent.style("opacity", "1", "pointerEvents", "auto");
   }
+}
+
+function mouseClicked() {
 
   if(menu === 1 && menuOn === true){
     if(mouseY > height*3/4 || mouseY < height/4){
