@@ -1,8 +1,8 @@
 # Surprise, surprise!
-This repository is the starting point of the assignments given in the elective course [Creative Coding at Politecnico di Milano]
+This repository is the starting point of the group project given in the elective course [Creative Coding at Politecnico di Milano](https://www4.ceda.polimi.it/manifesti/manifesti/controller/ManifestoPublic.do?EVN_DETTAGLIO_RIGA_MANIFESTO=evento&aa=2016&k_cf=19&k_corso_la=1092&k_indir=***&codDescr=050538&lang=IT&semestre=1&anno_corso=2&idItemOfferta=123381&idRiga=202553).
 
-[Creative Coding 2019/2020](https://drawwithcode.github.io/2019/)  
-Politecnico di Milano - Scuola del Design  
+[Here](https://drawwithcode.github.io/2019/) you can see the assignments done by the students and the group projects, too.
+Politecnico di Milano - Scuola del Design
 Faculty: Michele Mauri, Andrea Benedetti
 
 ![alt tag](../master/links/cover.png)
