@@ -3,14 +3,15 @@
 // =============================================================
 
 //Define all the variables for the preload (images and position)
-var position, presenticon;
+var position, yourpresent, importedpresent;
 
 //Add socket.io variable
 var socket;
 
 function preload() {
   position = getCurrentPosition();
-  presenticon = loadImage("./assets/png/presenticon.png");
+  yourpresent = loadImage("./assets/png/yourpresent.png");
+  importedpresent = loadImage("./assets/png/importedpresent.png");
 }
 
 //create a map and load it from mapbox
@@ -24,8 +25,8 @@ var options = {
   lng: 0,
   zoom: 20,
   maxZoom: 18,
-  minZoom: 12,
-  style: 'mapbox://styles/ellllaas/ck5pegaee60561ijyof7sstlx',
+  minZoom: 14,
+  style: 'mapbox://styles/ellllaas/ck5pegaee60561ijyof7sstlx?optimize=true',
   interactive: true
 }
 
@@ -33,10 +34,14 @@ var options = {
 var myLat;
 var myLon;
 
-//Define the arrays that will hold all the presents
+//Define arrays holding presents
 var regali = [];
 var regalimported = [];
+
+//Define arrays holding positions
 var imposition = [];
+
+//Define index for the arrays
 var i = 0;
 var t = 0;
 var o = 0;
@@ -47,6 +52,7 @@ var givepresent;
 //Boolean that stops interactions when a menu is open
 var menu = 0;
 var menuOn = false;
+var alfa = 255;
 
 function setup() {
   canvas = createCanvas(windowWidth, windowHeight);
@@ -64,6 +70,14 @@ function setup() {
   myLat = position.latitude;
   myLon = position.longitude;
 
+  var impos = {
+    x: myLat,
+    y: myLon
+  }
+
+  //Emit position to other users
+  socket.emit('position', impos);
+
   //Change position of the circle on position change
   watchPosition(Movement, 500);
 
@@ -76,7 +90,7 @@ function setup() {
 
   //Create present button
   givepresent = createImg("assets/gif/caricamento.gif");
-  givepresent.position(width / 2 - width/8, height / 1.3);
+  givepresent.position(width / 2 - width/6, height / 1.3);
   givepresent.addClass("PresentButton");
 }
 
@@ -91,13 +105,17 @@ function draw() {
   ellipse(myPosition.x, myPosition.y, 20);
   pop();
 
-  var impos = {
-    x: myLat,
-    y: myLon
+  //Create a radar effect around you
+  push();
+  var myPosition = myMap.latLngToPixel(myLat, myLon);
+  alfa = alfa - 3;
+  noFill()
+  stroke(255, 0, 0, alfa);
+  ellipse(myPosition.x, myPosition.y, 255 - alfa);
+  if (alfa < 0){
+    alfa = 255;
   }
-
-  //Emit position to other users
-  socket.emit('position', impos);
+  pop();
 
   //Display Presents
   for (var j = 0; j < regali.length; j++) {
@@ -110,7 +128,7 @@ function draw() {
     regalimported[k].display();
   }
 
-  //Display Presents
+  //Display Users
   var useroni = imposition.length;
   for (var g = 0; g < useroni; g++) {
     imposition[g].display();
@@ -120,10 +138,12 @@ function draw() {
   if (menu === 1) {
     push();
     if (menuOn === false) {
-      document.getElementById("MenuPresent").style.zIndex = 10;
-      document.getElementById("MenuPresent").style.opacity = 1;
-      document.getElementById("Question1").style.opacity = 1;
-      document.getElementById("answer1").style.opacity = 0;
+      $("#MenuPresent").css({"zIndex": "10", "opacity": "1"});
+      $("#Question1").css("opacity", "1");
+      $("#Send").css("opacity", "1");
+      $("#QuestionName").css("opacity", "1");
+      $("#answer1").css("opacity", "0");
+      $("#illustration").css({"pointerEvents": "none", "opacity": "0"});
       menuOn = true;
     }
     pop();
@@ -133,10 +153,12 @@ function draw() {
   if (menu === 2) {
     push();
     if (menuOn === false) {
-      document.getElementById("MenuPresent").style.zIndex = 10;
-      document.getElementById("MenuPresent").style.opacity = 1;
-      document.getElementById("Question1").style.opacity = 0;
-      document.getElementById("answer1").style.opacity = 1;
+      $("#MenuPresent").css({"zIndex": "10", "opacity": "1"});
+      $("#Question1").css("opacity", "0");
+      $("#QuestionName").css("opacity", "0");
+      $("#Send").css("opacity", "0");
+      $("#answer1").css("opacity", "1");
+      $("#illustration").css({"pointerEvents": "auto", "opacity": "1", "background-image": "url(assets/gif/illustration"+round(random(2)+1)+".gif)"});
       menuOn = true;
     }
     pop();
@@ -149,14 +171,20 @@ function draw() {
 }
 
 function mouseClicked() {
-  //Menu disappears when the rect is clicked
-  if (menu != 0 && mouseX > width / 8 && mouseX < width * 7 / 8 && mouseY > height * 5 / 8 && mouseY < height * 7 / 8) {
-    if (menu === 1) {
-      GivePresent();
-    }
+  //Send Menu disappears when the button is pressed
+  if (menu === 1 && mouseX > width*2.85/8 && mouseX < width * 5.3/8 && mouseY > height*4.4/8 && mouseY < height*5.5/8) {
+    GivePresent();
     menu = 0;
-    document.getElementById("MenuPresent").style.zIndex = 0;
-    document.getElementById("MenuPresent").style.opacity = 0;
+    $("#MenuPresent").css({"zIndex": "0", "opacity": "0"});
+    $("#illustration").css({"pointerEvents": "none"});
+    menuOn = false;
+    givepresent.style("opacity", "1", "pointerEvents", "auto");
+  }
+
+  //Receive Menu disappears when pressed
+  if (menu === 2) {
+    menu = 0;
+    $("#MenuPresent").css({"zIndex": "0", "opacity": "0"});
     menuOn = false;
     givepresent.style("opacity", "1", "pointerEvents", "auto");
   }
@@ -187,6 +215,7 @@ function Imposition(impos) {
   var ry = impos.y;
   var g = random(255);
   var b = random(255);
+  var alfaimported = 255;
 
   this.display = function() {
     var posizione = myMap.latLngToPixel(rx, ry);
@@ -195,6 +224,17 @@ function Imposition(impos) {
     fill(0, g, b, 15);
     stroke(0, g, b);
     ellipse(this.x, this.y, 20);
+
+    //Create a radar effect around you
+    push();
+    alfaimported = alfaimported - 3;
+    noFill()
+    stroke(0, g, b, alfaimported);
+    ellipse(posizione.x, posizione.y, 255 - alfaimported);
+    if (alfaimported < 0){
+      alfaimported = 255;
+    }
+    pop();
   }
 }
 
@@ -235,7 +275,7 @@ function Regalo() {
     if (iconshow === 0) {
       push();
       imageMode(CENTER);
-      icon = image(presenticon, this.x, this.y, 50, 50);
+      icon = image(yourpresent, this.x, this.y, 60, 60);
       pop();
     }
   }
@@ -292,7 +332,7 @@ function RegaloImported(data) {
     if (iconshow === 0) {
       push();
       imageMode(CENTER);
-      icon = image(presenticon, this.x, this.y, 50, 50);
+      icon = image(importedpresent, this.x, this.y, 60, 60);
       pop();
     }
   }
@@ -335,3 +375,13 @@ function Movement(posizione) {
 this.touchMoved = function() {
   return false;
 }
+
+// =============================================================
+// =                LOAD AND GOTO ANIMATION                    =
+// =============================================================
+
+$( document ).ready(function(){
+  setTimeout(function(){$("#g").addClass("animateload");}, 1600);
+  setTimeout(function(){$("#r").addClass("animateload");}, 1800);
+  setTimeout(function(){$("#b").addClass("animateload");}, 2000);
+});

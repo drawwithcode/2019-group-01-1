@@ -36,11 +36,8 @@ Every time he reconnects he will have to start over.
 
 **The Tools**
 * p5.js
-* AR.js
 * Mappa.js
-* Three.js
 * Mapbox
-* Ngrock
 
 **Students Team**
 * Niccolò Abate   

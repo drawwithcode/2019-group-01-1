@@ -6,20 +6,34 @@
     <script src="p5.min.js"></script>
     <script src="addons/p5.geolocation.js"></script>
    	<script src="addons/mappa.js" type="text/javascript"></script>
-    <script src="https://unpkg.com/p5.touchgui@0.5.2/lib/p5.touchgui.js"></script>
     <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <!-- Link p5.js Sketch and css -->
     <script src="js/sketch_game.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
 	<body>
     <div id="MenuPresent">
+      <p id="QuestionName">How do you feel?</p>
       <form id="Question1">
-        <label><input type="radio" name="radgroup" class="question" id="normal"> &#128578; </label>
-        <label><input type="radio" name="radgroup" class="question" id="smily"> &#128522; </label>
-        <label><input type="radio" name="radgroup" class="question" id="happy"> &#128516; </label>
+        <input type="radio" name="radgroup" class="question" id="normal">
+        <label for="normal" class="questiontext">&#128578;</label>
+        <input type="radio" name="radgroup" class="question" id="smily">
+        <label for="smily" class="questiontext">&#128522;</label>
+        <input type="radio" name="radgroup" class="question" id="happy">
+        <label for="happy" class="questiontext">&#128516;</label>
       </form>
-      <p id="answer1" class="question"></p>
+      <div id="Send"></div>
+      <p id="answer1"></p>
+      <div id="illustration"></div>
     </div>
+    <div id="loading">
+      <div id="b" class="loaderdivs"></div>
+      <div id="r" class="loaderdivs"></div>
+      <div id="g" class="loaderdivs"></div>
+    </div>
+    <img src="./assets/gif/Up-game.gif" id="upillustration"></img>
+    <!--<img src="./assets/gif/left-game.gif" id="leftillustration"></img>
+    <img src="./assets/gif/right-game.gif" id="rightillustration"></img>-->
 	</body>
 </html>
