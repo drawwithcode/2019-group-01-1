@@ -29,10 +29,7 @@ Our main inspirations have been the social-detox apps that help the users to red
 The user can through the map in any directions, but he will have some restrictions: he won’t be able to zoom back over a certain value, to discourage the user from exploring the places on the man that are not strictly surrounding. The user can move on the map as he moves around in real life; through a button located in the bottom part of the scree he can leave some packets around, which could be opened from other users that find them while exploring the map. The user will be able to leave a content of his choice hidden inside the gifts.
 
 ## The Content
-The user will choose between three emojis to express his mood; in the packets there will be a short message representing the mood of the person who left it and an illustration, Christmas-themed, randomly chosen between five different ones.   
-> illustrations by [undraw.co](https://undraw.co/)) 
-
-The one who will find the packets will get the chance to read the emotions of the person around him and in the meantime to collect the illustrations.
+The user will choose between three emojis to express his mood; in the packets there will be a short message representing the mood of the person who left it and an illustration, Christmas-themed, randomly chosen between five different ones. The one who will find the packets will get the chance to read the emotions of the person around him and in the meantime to collect the illustrations.
 
 ## The Challenge
 Every time the user access the app, he will have the chance to collect all the different illustrations and to leave the packets around (so other users can collect them and the game can proceed) until he stays on the website.
@@ -48,3 +45,7 @@ Every time he reconnects he will have to start over.
 * Alvise Aspesi  
 * Elisa Carbone  
 * Davide Perucchini
+
+>CREDITS  
+
+>illustrations by [undraw.co](https://undraw.co/)
