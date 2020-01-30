@@ -3,7 +3,7 @@
 // =============================================================
 
 //Define all the variables for the preload (images and position)
-var position, yourpresent, importedpresent;
+var position, yourpresent, importedpresent, database;
 
 //Add socket.io variable
 var socket;
@@ -12,6 +12,7 @@ function preload() {
   position = getCurrentPosition();
   yourpresent = loadImage("./assets/png/yourpresent.png");
   importedpresent = loadImage("./assets/png/importedpresent.png");
+  database = loadJSON("../presents.json");
 }
 
 //create a map and load it from mapbox
@@ -43,7 +44,6 @@ var imposition = [];
 
 //Define index for the arrays
 var i = 0;
-var t = 0;
 var o = 0;
 
 var pressed = 0;
@@ -62,21 +62,12 @@ function setup() {
   socket = io();
 
   //Get information from other players
-  socket.on("presentBroadcast", leavePresent);
   socket.on("Closing", stopIcon);
-  socket.on("imposition", addPosition);
+  socket.on('presentBroadcast', leavePresent);
 
   //define that the position of the user will define his lat and his lon
   myLat = position.latitude;
   myLon = position.longitude;
-
-  var impos = {
-    x: myLat,
-    y: myLon
-  }
-
-  //Emit position to other users
-  socket.emit('position', impos);
 
   //Change position of the circle on position change
   watchPosition(Movement, 500);
@@ -89,13 +80,28 @@ function setup() {
   myMap.overlay(canvas);
 
   //Create present button
-  givepresent = createImg("assets/gif/caricamento.gif");
+  givepresent = createImg("assets/gif/button.gif");
   givepresent.position(width / 2 - width/6, height / 1.3);
   givepresent.addClass("PresentButton");
+
+  for (var t = 0; t < database.regali.length; t++) {
+    var data = {
+      x: database.regali[t].x,
+      y: database.regali[t].y,
+      q1: database.regali[t].q1,
+      show: database.regali[t].show,
+      index: t
+    }
+    regalimported[t] = new RegaloImported(data);
+  }
 }
 
 function draw() {
   clear();
+
+  /*if(frameCount % 30){
+    database = loadJSON("./presents.json");
+  }*/
 
   //Draw where you are
   push();
@@ -205,45 +211,27 @@ function PresentMenu() {
   menu = 1;
 }
 
-function addPosition(impos) {
-  imposition[o] = new Imposition(impos);
-  o++;
-}
-
-function Imposition(impos) {
-  var rx = impos.x;
-  var ry = impos.y;
-  var g = random(255);
-  var b = random(255);
-  var alfaimported = 255;
-
-  this.display = function() {
-    var posizione = myMap.latLngToPixel(rx, ry);
-    this.x = posizione.x;
-    this.y = posizione.y;
-    fill(0, g, b, 15);
-    stroke(0, g, b);
-    ellipse(this.x, this.y, 20);
-
-    //Create a radar effect around you
-    push();
-    alfaimported = alfaimported - 3;
-    noFill()
-    stroke(0, g, b, alfaimported);
-    ellipse(posizione.x, posizione.y, 255 - alfaimported);
-    if (alfaimported < 0){
-      alfaimported = 255;
-    }
-    pop();
-  }
-}
-
 function GivePresent() {
   regali[i] = new Regalo();
   i++;
 }
 
 function stopIcon(stopIcon) {
+  regalimported = [];
+  database = loadJSON("../presents.json");
+  setTimeout(function(){
+    for (var t = 0; t < database.regali.length; t++) {
+      var data = {
+        x: database.regali[t].x,
+        y: database.regali[t].y,
+        q1: database.regali[t].q1,
+        show: database.regali[t].show,
+        index: t
+      }
+      regalimported[t] = new RegaloImported(data);
+    }
+  }, 1500);
+
   for (var j = 0; j < regali.length; j++) {
     regali[j].close(stopIcon);
   }
@@ -306,13 +294,33 @@ function Regalo() {
     show: iconshow
   }
 
+  var json = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: data
+  }
+
   //Emit the present data to other people
-  socket.emit('present', data);
+  socket.emit('present', json);
 }
 
-function leavePresent(data) {
-  regalimported[t] = new RegaloImported(data);
-  t++;
+function leavePresent(request) {
+  regalimported = [];
+  database = loadJSON("../presents.json");
+  setTimeout(function(){
+    for (var t = 0; t < database.regali.length; t++) {
+      var data = {
+        x: database.regali[t].x,
+        y: database.regali[t].y,
+        q1: database.regali[t].q1,
+        show: database.regali[t].show,
+        index: t
+      }
+      regalimported[t] = new RegaloImported(data);
+    }
+  },1000);
 }
 
 function RegaloImported(data) {
@@ -321,6 +329,7 @@ function RegaloImported(data) {
   var question1 = data.q1;
   rx = data.x;
   ry = data.y;
+  index = data.index;
 
   this.display = function() {
     //Define dinamically the position of the icon on the map
@@ -347,10 +356,11 @@ function RegaloImported(data) {
 
       var close = {
         mx: mouseX,
-        my: mouseY
+        my: mouseY,
+        index: index
       }
 
-      socket.emit('closing', close);
+      socket.emit('closepresent', close);
     }
   }
 
@@ -382,6 +392,6 @@ this.touchMoved = function() {
 
 $( document ).ready(function(){
   setTimeout(function(){$("#g").addClass("animateload");}, 1600);
-  setTimeout(function(){$("#r").addClass("animateload");}, 1800);
-  setTimeout(function(){$("#b").addClass("animateload");}, 2000);
+  setTimeout(function(){$("#b").addClass("animateload");}, 1800);
+  setTimeout(function(){$("#r").addClass("animateload");}, 2000);
 });
