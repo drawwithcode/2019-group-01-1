@@ -356,7 +356,7 @@ this.touchMoved = function() {
 // =============================================================
 
 $( document ).ready(function(){
-  setTimeout(function(){$("#g").addClass("animateload");}, 1000);
-  setTimeout(function(){$("#r").addClass("animateload");}, 1200);
-  setTimeout(function(){$("#b").addClass("animateload");}, 1400);
+  setTimeout(function(){$("#g").addClass("animateload");}, 1600);
+  setTimeout(function(){$("#r").addClass("animateload");}, 1800);
+  setTimeout(function(){$("#b").addClass("animateload");}, 2000);
 });
