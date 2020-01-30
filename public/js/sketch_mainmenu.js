@@ -40,7 +40,7 @@ function draw(){
     ellipse(windowWidth/2, windowHeight/3, windowWidth/2.5);
     fill(255);
     text("Play", width/2-2, windowHeight/3+12);
-    window.location.href = "game.html";
+    animate();
   } else{
     fill("#ff0160");
     ellipse(windowWidth/2-5, windowHeight/3-10, windowWidth/2.5);
@@ -80,6 +80,7 @@ function snowflake() {
   this.posY = random(-50, 0);
   this.initialangle = random(0, 2 * PI);
   this.size = random(10, 15);
+  this.opacità = 255;
 
   // radius of snowflake spiral
   // chosen so the snowflakes are uniformly spread out in area
@@ -103,10 +104,29 @@ function snowflake() {
 
   this.display = function() {
     noStroke();
+    this.opacità = this.opacità - frameCount/1000;
+    fill(255,255,255,this.opacità);
     ellipse(this.posX, this.posY, this.size);
   };
 }
 
 this.touchMoved = function() {
   return false;
+}
+
+// =============================================================
+// =                LOAD AND GOTO ANIMATION                    =
+// =============================================================
+
+$( document ).ready(function(){
+  setTimeout(function(){$("#g").addClass("animateload");}, 200);
+  setTimeout(function(){$("#r").addClass("animateload");}, 400);
+  setTimeout(function(){$("#b").addClass("animateload");}, 600);
+});
+
+function animate(){
+  setTimeout(function(){$("#b").addClass("animategoto");}, 200);
+  setTimeout(function(){$("#r").addClass("animategoto");}, 400);
+  setTimeout(function(){$("#g").addClass("animategoto");}, 600);
+  setTimeout(function(){window.location.href = "game.html";}, 1600);
 }

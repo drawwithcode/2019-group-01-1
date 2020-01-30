@@ -69,6 +69,14 @@ function setup() {
   myLat = position.latitude;
   myLon = position.longitude;
 
+  var impos = {
+    x: myLat,
+    y: myLon
+  }
+
+  //Emit position to other users
+  socket.emit('position', impos);
+
   //Change position of the circle on position change
   watchPosition(Movement, 500);
 
@@ -96,14 +104,6 @@ function draw() {
   ellipse(myPosition.x, myPosition.y, 20);
   pop();
 
-  var impos = {
-    x: myLat,
-    y: myLon
-  }
-
-  //Emit position to other users
-  socket.emit('position', impos);
-
   //Display Presents
   for (var j = 0; j < regali.length; j++) {
     regali[j].display();
@@ -125,10 +125,12 @@ function draw() {
   if (menu === 1) {
     push();
     if (menuOn === false) {
-      document.getElementById("MenuPresent").style.zIndex = 10;
-      document.getElementById("MenuPresent").style.opacity = 1;
-      document.getElementById("Question1").style.opacity = 1;
-      document.getElementById("answer1").style.opacity = 0;
+      $("#MenuPresent").css({"zIndex": "10", "opacity": "1"});
+      $("#Question1").css("opacity", "1");
+      $("#Send").css("opacity", "1");
+      $("#QuestionName").css("opacity", "1");
+      $("#answer1").css("opacity", "0");
+      $("#illustration").css({"pointerEvents": "none", "opacity": "0"});
       menuOn = true;
     }
     pop();
@@ -138,10 +140,12 @@ function draw() {
   if (menu === 2) {
     push();
     if (menuOn === false) {
-      document.getElementById("MenuPresent").style.zIndex = 10;
-      document.getElementById("MenuPresent").style.opacity = 1;
-      document.getElementById("Question1").style.opacity = 0;
-      document.getElementById("answer1").style.opacity = 1;
+      $("#MenuPresent").css({"zIndex": "10", "opacity": "1"});
+      $("#Question1").css("opacity", "0");
+      $("#QuestionName").css("opacity", "0");
+      $("#Send").css("opacity", "0");
+      $("#answer1").css("opacity", "1");
+      $("#illustration").css({"pointerEvents": "auto", "opacity": "1", "background-image": "url(assets/gif/illustration"+round(random(2)+1)+".gif)"});
       menuOn = true;
     }
     pop();
@@ -154,14 +158,20 @@ function draw() {
 }
 
 function mouseClicked() {
-  //Menu disappears when the rect is clicked
-  if (menu != 0 && mouseX > width / 8 && mouseX < width * 7 / 8 && mouseY > height * 5 / 8 && mouseY < height * 7 / 8) {
-    if (menu === 1) {
-      GivePresent();
-    }
+  //Send Menu disappears when the button is pressed
+  if (menu === 1 && mouseX > width*2.85/8 && mouseX < width * 5.3/8 && mouseY > height*4.4/8 && mouseY < height*5.5/8) {
+    GivePresent();
     menu = 0;
-    document.getElementById("MenuPresent").style.zIndex = 0;
-    document.getElementById("MenuPresent").style.opacity = 0;
+    $("#MenuPresent").css({"zIndex": "0", "opacity": "0"});
+    $("#illustration").css({"pointerEvents": "none"});
+    menuOn = false;
+    givepresent.style("opacity", "1", "pointerEvents", "auto");
+  }
+
+  //Receive Menu disappears when pressed
+  if (menu === 2) {
+    menu = 0;
+    $("#MenuPresent").css({"zIndex": "0", "opacity": "0"});
     menuOn = false;
     givepresent.style("opacity", "1", "pointerEvents", "auto");
   }
@@ -340,3 +350,13 @@ function Movement(posizione) {
 this.touchMoved = function() {
   return false;
 }
+
+// =============================================================
+// =                LOAD AND GOTO ANIMATION                    =
+// =============================================================
+
+$( document ).ready(function(){
+  setTimeout(function(){$("#g").addClass("animateload");}, 200);
+  setTimeout(function(){$("#r").addClass("animateload");}, 400);
+  setTimeout(function(){$("#b").addClass("animateload");}, 600);
+});
