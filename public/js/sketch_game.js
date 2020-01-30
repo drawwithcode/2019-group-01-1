@@ -52,6 +52,7 @@ var givepresent;
 //Boolean that stops interactions when a menu is open
 var menu = 0;
 var menuOn = false;
+var alfa = 255;
 
 function setup() {
   canvas = createCanvas(windowWidth, windowHeight);
@@ -104,6 +105,18 @@ function draw() {
   ellipse(myPosition.x, myPosition.y, 20);
   pop();
 
+  //Create a radar effect around you
+  push();
+  var myPosition = myMap.latLngToPixel(myLat, myLon);
+  alfa = alfa - 3;
+  noFill()
+  stroke(255, 0, 0, alfa);
+  ellipse(myPosition.x, myPosition.y, 255 - alfa);
+  if (alfa < 0){
+    alfa = 255;
+  }
+  pop();
+
   //Display Presents
   for (var j = 0; j < regali.length; j++) {
     regali[j].display();
@@ -115,7 +128,7 @@ function draw() {
     regalimported[k].display();
   }
 
-  //Display Presents
+  //Display Users
   var useroni = imposition.length;
   for (var g = 0; g < useroni; g++) {
     imposition[g].display();
@@ -202,6 +215,7 @@ function Imposition(impos) {
   var ry = impos.y;
   var g = random(255);
   var b = random(255);
+  var alfaimported = 255;
 
   this.display = function() {
     var posizione = myMap.latLngToPixel(rx, ry);
@@ -210,6 +224,17 @@ function Imposition(impos) {
     fill(0, g, b, 15);
     stroke(0, g, b);
     ellipse(this.x, this.y, 20);
+
+    //Create a radar effect around you
+    push();
+    alfaimported = alfaimported - 3;
+    noFill()
+    stroke(0, g, b, alfaimported);
+    ellipse(posizione.x, posizione.y, 255 - alfaimported);
+    if (alfaimported < 0){
+      alfaimported = 255;
+    }
+    pop();
   }
 }
 
