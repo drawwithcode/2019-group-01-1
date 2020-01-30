@@ -32,9 +32,7 @@ function newConnection(socket){
 	function closePresent(stopIcon){
 		var fs = require('fs');
 		var m = JSON.parse(fs.readFileSync('./public/presents.json').toString());
-		console.log(stopIcon.index);
 		m.regali[stopIcon.index].show =  1;
-		console.log(m.regali[0].show);
 		fs.writeFile('public/presents.json', JSON.stringify(m, null, 2), finished);
 		socket.broadcast.emit('Closing', stopIcon);
 	}

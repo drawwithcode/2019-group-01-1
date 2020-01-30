@@ -3,7 +3,7 @@
 // =============================================================
 
 //Define all the variables for the preload (images and position)
-var position, yourpresent, importedpresent, database;
+var position, yourpresent, importedpresent, database, lobster;
 
 //Add socket.io variable
 var socket;
@@ -13,6 +13,7 @@ function preload() {
   yourpresent = loadImage("./assets/png/yourpresent.png");
   importedpresent = loadImage("./assets/png/importedpresent.png");
   database = loadJSON("../presents.json");
+  lobster = loadFont('./assets/fonts/Lobster-Regular.ttf');
 }
 
 //create a map and load it from mapbox
@@ -39,12 +40,8 @@ var myLon;
 var regali = [];
 var regalimported = [];
 
-//Define arrays holding positions
-var imposition = [];
-
 //Define index for the arrays
 var i = 0;
-var o = 0;
 
 var pressed = 0;
 var givepresent;
@@ -99,10 +96,6 @@ function setup() {
 function draw() {
   clear();
 
-  /*if(frameCount % 30){
-    database = loadJSON("./presents.json");
-  }*/
-
   //Draw where you are
   push();
   var myPosition = myMap.latLngToPixel(myLat, myLon);
@@ -134,12 +127,6 @@ function draw() {
     regalimported[k].display();
   }
 
-  //Display Users
-  var useroni = imposition.length;
-  for (var g = 0; g < useroni; g++) {
-    imposition[g].display();
-  }
-
   //Display Menu when you give a present
   if (menu === 1) {
     push();
@@ -164,7 +151,14 @@ function draw() {
       $("#QuestionName").css("opacity", "0");
       $("#Send").css("opacity", "0");
       $("#answer1").css("opacity", "1");
-      $("#illustration").css({"pointerEvents": "auto", "opacity": "1", "background-image": "url(assets/gif/illustration"+round(random(2)+1)+".gif)"});
+      $("#illustration").css({"pointerEvents": "auto", "opacity": "1", "background-image": "url(assets/gif/illustration"+round(random(4)+1)+".gif)"});
+      if(document.getElementById("answer1").innerHTML === "sad"){
+        $("#illustration").css("background-image", "url(assets/gif/illustration"+round(random(1)+3)+".gif)");
+      } else if(document.getElementById("answer1").innerHTML === "normal"){
+        $("#illustration").css("background-image", "url(assets/gif/illustration"+round(random(1)+1)+".gif)");
+      } else if(document.getElementById("answer1").innerHTML === "happy"){
+        $("#illustration").css("background-image", "url(assets/gif/illustration5.gif)");
+      }
       menuOn = true;
     }
     pop();
@@ -174,6 +168,11 @@ function draw() {
   if (menu === 1 || menu === 2) {
     givepresent.style("opacity", "0", "pointerEvents", "none");
   }
+
+  push();
+  fill(255);
+  rect(width*2.85/8, height*4.4/8, width*2.45/8, height*1.1/8);
+  pop();
 }
 
 function mouseClicked() {
@@ -245,9 +244,9 @@ function Regalo() {
   var rx = myLat;
   var ry = myLon;
 
-  if (document.getElementById('normal').checked) {
+  if (document.getElementById('sad').checked) {
     question1 = 1;
-  } else if (document.getElementById('smily').checked) {
+  } else if (document.getElementById('normal').checked) {
     question1 = 2;
   } else if (document.getElementById('happy').checked) {
     question1 = 3;
@@ -271,8 +270,10 @@ function Regalo() {
   this.close = function(stopIcon) {
     maX = stopIcon.mx;
     maY = stopIcon.my;
+    console.log(maX,maY,this.x,this.y);
     var d = dist(maX, maY, this.x, this.y);
-    if (d < 50 && menu === 0) {
+    console.log(d);
+    if (d < 100 && menu === 0) {
       iconshow = 1;
     }
   }
@@ -327,13 +328,14 @@ function RegaloImported(data) {
   //Define the icon boolean that will say to show the image
   var iconshow = data.show;
   var question1 = data.q1;
+  var posizione;
   rx = data.x;
   ry = data.y;
   index = data.index;
 
   this.display = function() {
     //Define dinamically the position of the icon on the map
-    var posizione = myMap.latLngToPixel(rx, ry);
+    posizione = myMap.latLngToPixel(rx, ry);
     this.x = posizione.x;
     this.y = posizione.y;
 
@@ -355,8 +357,8 @@ function RegaloImported(data) {
       this.opened();
 
       var close = {
-        mx: mouseX,
-        my: mouseY,
+        mx: posizione.x,
+        my: posizione.y,
         index: index
       }
 
@@ -366,9 +368,9 @@ function RegaloImported(data) {
 
   this.opened = function() {
     if (question1 === 1) {
-      document.getElementById("answer1").innerHTML = "normal";
+      document.getElementById("answer1").innerHTML = "sad";
     } else if (question1 === 2) {
-      document.getElementById("answer1").innerHTML = "smily";
+      document.getElementById("answer1").innerHTML = "normal";
     } else if (question1 === 3) {
       document.getElementById("answer1").innerHTML = "happy";
     }

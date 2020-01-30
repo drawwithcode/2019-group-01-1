@@ -6,12 +6,13 @@
 let snowflakes = [];
 
 //Define variables for all the preload files (images and font)
-var menuillustration, logo, lobster;
+var menuillustration, logo, lobster, lato;
 
 function preload(){
   menuillustration = loadImage("./assets/png/mainmenu.png");
   logo = loadImage("./assets/png/logo.png");
   lobster = loadFont('./assets/fonts/Lobster-Regular.ttf');
+  lato = loadFont('./assets/fonts/Lato-Regular.ttf');
 }
 
 function setup(){
@@ -28,22 +29,22 @@ function draw(){
   //Create Play button
   push();
   textAlign(CENTER);
-  textSize(width/8);
+  textSize(height/16);
   textFont(lobster);
   noStroke();
   fill(255);
-  ellipse(windowWidth/2, windowHeight/3, windowWidth/2.3);
+  ellipse(windowWidth/2, windowHeight/3, height/5+20);
   fill("#d5004d");
-  ellipse(windowWidth/2, windowHeight/3, windowWidth/2.5);
-  if(mouseIsPressed && d < windowWidth/5){
+  ellipse(windowWidth/2, windowHeight/3, height/5);
+  if(mouseIsPressed && d < height/10){
     fill("#ff0160");
-    ellipse(windowWidth/2, windowHeight/3, windowWidth/2.5);
+    ellipse(windowWidth/2, windowHeight/3, height/5);
     fill(255);
     text("Play", width/2-2, windowHeight/3+12);
     animate();
   } else{
     fill("#ff0160");
-    ellipse(windowWidth/2-5, windowHeight/3-10, windowWidth/2.5);
+    ellipse(windowWidth/2-5, windowHeight/3-10, height/5);
     fill(255);
     text("Play", width/2-5, windowHeight/3+5);
   }
@@ -52,10 +53,10 @@ function draw(){
   //Show Illustration
   push();
   imageMode(CENTER);
-  image(menuillustration, windowWidth/2, windowHeight/1.6, width, width/2);
+  image(menuillustration, windowWidth/2, windowHeight/1.6, height/2.5, height/5);
 
   //Show Logo
-  image(logo, windowWidth/2, windowHeight/8, width/1.2, width/2.4);
+  image(logo, windowWidth/2, windowHeight/8, height/2.5, height/5);
   pop();
 
   //Create snowflakes for added Christmas
@@ -80,7 +81,6 @@ function snowflake() {
   this.posY = random(-50, 0);
   this.initialangle = random(0, 2 * PI);
   this.size = random(10, 15);
-  this.opacità = 255;
 
   // radius of snowflake spiral
   // chosen so the snowflakes are uniformly spread out in area
@@ -104,8 +104,7 @@ function snowflake() {
 
   this.display = function() {
     noStroke();
-    this.opacità = this.opacità - frameCount/1000;
-    fill(255,255,255,this.opacità);
+    fill(255,255,255,200);
     ellipse(this.posX, this.posY, this.size);
   };
 }

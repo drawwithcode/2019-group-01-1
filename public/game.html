@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
-    <meta http-equiv="ScreenOrientation" content="autoRotate:disabled">
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1" http-equiv="ScreenOrientation" content="autoRotate:disabled">
     <title>Surprise, Surprise!</title>
     <link rel="shortcut icon" type="image/png" href="favicon.png"/>
     <!-- Link p5.js and libraries-->
@@ -19,10 +18,10 @@
     <div id="MenuPresent">
       <p id="QuestionName">How do you feel?</p>
       <form id="Question1">
+        <input type="radio" name="radgroup" class="question" id="sad">
+        <label for="sad" class="questiontext">&#128532;</label>
         <input type="radio" name="radgroup" class="question" id="normal">
-        <label for="normal" class="questiontext">&#128578;</label>
-        <input type="radio" name="radgroup" class="question" id="smily">
-        <label for="smily" class="questiontext">&#128522;</label>
+        <label for="normal" class="questiontext">&#128528;</label>
         <input type="radio" name="radgroup" class="question" id="happy">
         <label for="happy" class="questiontext">&#128516;</label>
       </form>
@@ -36,7 +35,6 @@
       <div id="g" class="loaderdivs"></div>
     </div>
     <img src="./assets/gif/Up-game.gif" id="upillustration"></img>
-    <!--<img src="./assets/gif/left-game.gif" id="leftillustration"></img>
-    <img src="./assets/gif/right-game.gif" id="rightillustration"></img>-->
+    <img src="./assets/gif/Up-game2.gif" id="upillustration2"></img>
 	</body>
 </html>

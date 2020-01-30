@@ -3,6 +3,11 @@
   src: url(./assets/fonts/Lobster-Regular.ttf);
 }
 
+@font-face {
+  font-family: Lato;
+  src: url(./assets/fonts/Lato-Regular.ttf);
+}
+
 html, body {
   overflow: hidden;
 }
@@ -11,6 +16,13 @@ body {
   padding: 0;
   margin: 0;
   position: relative;
+}
+
+@media only screen and (orientation:landscape){
+  body {
+    width: 100vh;
+    transform: rotate(90deg);
+  }
 }
 
 /*/////////////////////////////*/
@@ -37,6 +49,19 @@ body {
 
 #r{
   background-color: #F8B229;
+}
+
+#instructions{
+  position: absolute;
+  font-size: 3vh;
+  text-align: center;
+  font-family: Lato;
+  color: #3499fe;
+  left:50%;
+  transform: translate(-50%);
+  bottom: 5vh;
+  width: 80vw;
+  height: 20vh;
 }
 
 .animateload{
@@ -162,6 +187,15 @@ body {
 }
 
 #upillustration{
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 100vw;
+  z-index: 20;
+  pointer-events: none;
+}
+
+#upillustration2{
   position: absolute;
   left: 0;
   width: 100vw;
