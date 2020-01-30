@@ -135,6 +135,7 @@ function draw() {
       $("#Question1").css("opacity", "1");
       $("#Send").css("opacity", "1");
       $("#QuestionName").css("opacity", "1");
+      $("#back").css("opacity", "1");
       $("#answer1").css("opacity", "0");
       $("#illustration").css({"pointerEvents": "none", "opacity": "0"});
       menuOn = true;
@@ -149,6 +150,7 @@ function draw() {
       $("#MenuPresent").css({"zIndex": "10", "opacity": "1"});
       $("#Question1").css("opacity", "0");
       $("#QuestionName").css("opacity", "0");
+      $("#back").css("opacity", "0");
       $("#Send").css("opacity", "0");
       $("#answer1").css("opacity", "1");
       $("#illustration").css({"pointerEvents": "auto", "opacity": "1", "background-image": "url(assets/gif/illustration"+round(random(4)+1)+".gif)"});
@@ -170,14 +172,13 @@ function draw() {
   }
 
   push();
-  fill(255);
-  //rect(width*2.85/8, height*4.4/8, width*2.45/8, height*1.1/8);
+  rect(width*2.85/8, height*4.4/8, width*2.45/8, height*1.1/8)
   pop();
 }
 
 function mouseClicked() {
   //Send Menu disappears when the button is pressed
-  if (menu === 1 && mouseX > width*2.85/8 && mouseX < width * 5.3/8 && mouseY > height*4.4/8 && mouseY < height*5.5/8) {
+  if (menu === 1 && menuOn === true && mouseX > width*2.85/8 && mouseX < width * 5.3/8 && mouseY > height*4.4/8 && mouseY < height*5.5/8) {
     GivePresent();
     menu = 0;
     $("#MenuPresent").css({"zIndex": "0", "opacity": "0"});
@@ -186,12 +187,22 @@ function mouseClicked() {
     givepresent.style("opacity", "1", "pointerEvents", "auto");
   }
 
+  if(menu === 1 && menuOn === true){
+    if(mouseY > height*3/4 || mouseY < height/4){
+      menu = 0;
+      $("#MenuPresent").css({"zIndex": "0", "opacity": "0"});
+      $("#illustration").css({"pointerEvents": "none"});
+      givepresent.style("opacity", "1", "pointerEvents", "auto");
+      setTimeout(function(){menuOn = false;}, 300);
+    }
+  }
+
   //Receive Menu disappears when pressed
-  if (menu === 2) {
+  if (menu === 2 && menuOn === true) {
     menu = 0;
     $("#MenuPresent").css({"zIndex": "0", "opacity": "0"});
-    menuOn = false;
     givepresent.style("opacity", "1", "pointerEvents", "auto");
+    setTimeout(function(){menuOn = false;}, 300);
   }
 
   //Make present disappear after clicked
@@ -201,7 +212,7 @@ function mouseClicked() {
 
   //Make present appear when the Button is clicked
   var dbutton = dist(mouseX, mouseY, width / 2, height / 1.2);
-  if (dbutton < width / 5) {
+  if (dbutton < width / 5 && menuOn  === false && menu === 0) {
     PresentMenu();
   }
 }

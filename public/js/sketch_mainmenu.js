@@ -53,7 +53,7 @@ function draw(){
   //Show Illustration
   push();
   imageMode(CENTER);
-  image(menuillustration, windowWidth/2, windowHeight/1.6, height/2.5, height/5);
+  image(menuillustration, windowWidth/2, height/1.7, height/2.5, height/5);
 
   //Show Logo
   image(logo, windowWidth/2, windowHeight/8, height/2.5, height/5);
@@ -109,10 +109,6 @@ function snowflake() {
   };
 }
 
-this.touchMoved = function() {
-  return false;
-}
-
 // =============================================================
 // =                LOAD AND GOTO ANIMATION                    =
 // =============================================================
@@ -128,4 +124,16 @@ function animate(){
   setTimeout(function(){$("#b").addClass("animategoto");}, 400);
   setTimeout(function(){$("#g").addClass("animategoto");}, 600);
   setTimeout(function(){window.location.href = "game.html";}, 1600);
+}
+
+// ============================================
+// =                 GENERAL                  =
+// ============================================
+
+this.touchMoved = function() {
+  return false;
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
 }

@@ -97,7 +97,7 @@ body {
   border-width: 5px;
   border-color: rgba(52, 153, 254, .5);
   border-radius: 3vh;
-  height: 90vw;
+  height: 50vh;
   width: 80vw;
   opacity: 0;
   transition: 0.5s;
@@ -213,18 +213,4 @@ body {
   width: 30vw;
   background-image: url("./assets/png/button.png");
   background-size: 100%;
-}
-
-#Loader{
-  width:100vw;
-  height:100vh;
-  background-color: green;
-}
-
-#loadingif{
-  position:relative;
-  top:50%;
-  left:50%;
-  width:10vh;
-  height: 10vh;
 }
