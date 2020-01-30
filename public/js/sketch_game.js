@@ -8,14 +8,6 @@ var socket, canvas, givepresent, alfa = 255;
 //Define all the variables for the preload (images and position)
 var position, yourpresent, importedpresent, database, lobster;
 
-function preload() {
-  position = getCurrentPosition();
-  yourpresent = loadImage("./assets/png/yourpresent.png");
-  importedpresent = loadImage("./assets/png/importedpresent.png");
-  database = loadJSON("../presents.json");
-  lobster = loadFont('./assets/fonts/Lobster-Regular.ttf');
-}
-
 //create a map and load it from mapbox
 var myMap;
 var mappa = new Mappa('MapboxGL', "pk.eyJ1IjoiZWxsbGxhYXMiLCJhIjoiY2sybWU2c3JhMGZudTNvcDB0MzIybjM1ZiJ9.QEanQ7AjFqMkaCCghI-qig");
@@ -29,6 +21,14 @@ var options = {
   minZoom: 14,
   style: 'mapbox://styles/ellllaas/ck5pegaee60561ijyof7sstlx?optimize=true',
   interactive: true
+}
+
+function preload() {
+  position = getCurrentPosition();
+  yourpresent = loadImage("./assets/png/yourpresent.png");
+  importedpresent = loadImage("./assets/png/importedpresent.png");
+  database = loadJSON("../presents.json");
+  lobster = loadFont('./assets/fonts/Lobster-Regular.ttf');
 }
 
 var myLat; //define the position of the user and it's coordinates
@@ -144,11 +144,11 @@ function draw() {
       $("#Send").css("opacity", "0");
       $("#answer1").css("opacity", "1");
       $("#illustration").css({"pointerEvents": "auto", "opacity": "1", "background-image": "url(assets/gif/illustration"+round(random(4)+1)+".gif)"});
-      if(document.getElementById("answer1").innerHTML === "sad"){
+      if(document.getElementById("answer1").innerHTML === "Don't give up!"){
         $("#illustration").css("background-image", "url(assets/gif/illustration"+round(random(1)+3)+".gif)");
-      } else if(document.getElementById("answer1").innerHTML === "normal"){
+      } else if(document.getElementById("answer1").innerHTML === "Cheer up!"){
         $("#illustration").css("background-image", "url(assets/gif/illustration"+round(random(1)+1)+".gif)");
-      } else if(document.getElementById("answer1").innerHTML === "happy"){
+      } else if(document.getElementById("answer1").innerHTML === "Great!"){
         $("#illustration").css("background-image", "url(assets/gif/illustration5.gif)");
       }
       menuOn = true;
@@ -165,12 +165,14 @@ function draw() {
 function touchStarted(){
   //Send Menu disappears when the button is pressed
   if (menu === 1 && mouseX > width*2.85/8 && mouseX < width * 5.3/8 && mouseY > height*4.4/8 && mouseY < height*5.5/8) {
-    GivePresent();
-    menu = 0;
-    $("#MenuPresent").css({"zIndex": "0", "opacity": "0"});
-    $("#illustration").css({"pointerEvents": "none"});
-    menuOn = false;
-    givepresent.style("opacity", "1", "pointerEvents", "auto");
+    if(document.getElementById('sad').checked || document.getElementById('normal').checked || document.getElementById('happy').checked){
+      GivePresent();
+      menu = 0;
+      $("#MenuPresent").css({"zIndex": "0", "opacity": "0"});
+      $("#illustration").css({"pointerEvents": "none"});
+      menuOn = false;
+      givepresent.style("opacity", "1", "pointerEvents", "auto");
+    }
   }
 }
 
@@ -382,6 +384,15 @@ function Movement(posizione) {
   myLat = posizione.latitude;
   myLon = posizione.longitude;
 }
+// =============================================================
+// =                          OBJECTS                          =
+// =============================================================
+
+
+
+// =============================================================
+// =                          UTILITY                          =
+// =============================================================
 
 //Stops screen from being dragged
 this.touchMoved = function() {
