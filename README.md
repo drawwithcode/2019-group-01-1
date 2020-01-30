@@ -1,11 +1,11 @@
 # Surprise, surprise!
 This repository is the starting point of the group project given in the elective course [Creative Coding at Politecnico di Milano](https://www4.ceda.polimi.it/manifesti/manifesti/controller/ManifestoPublic.do?EVN_DETTAGLIO_RIGA_MANIFESTO=evento&aa=2016&k_cf=19&k_corso_la=1092&k_indir=***&codDescr=050538&lang=IT&semestre=1&anno_corso=2&idItemOfferta=123381&idRiga=202553).
 
-[Here](https://drawwithcode.github.io/2019/) you can see the assignments done by the students and the group projects, too.
-Politecnico di Milano - Scuola del Design
-Faculty: Michele Mauri, Andrea Benedetti
+[Here](https://drawwithcode.github.io/2019/) you can see the assignments done by the students and the group projects, too.  
+Politecnico di Milano - Scuola del Design\
+Faculty: Michele Mauri, Andrea Benedetti\
 
-![alt tag](../master/links/cover.png)
+![alt tag](../master/links/banner.png)
 
 ## The Idea  
 The projects starts with the idea of allowing an interaction between the users in an online space, along with the attempt of making it a pleasent experience that will make the world a better place.
