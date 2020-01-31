@@ -2,7 +2,7 @@
 
 ## About
 Surprise, Surprise! is a Christmas Themed Geolocation WebApp built on [p5.js](https://p5js.org) with the aim of sharing your feelings and spreading positivity.<br>
-The app is playable at: https://surprise-surprise.herokuapp.com/
+The app is playable at: https://surprise-surprise.herokuapp.com/<br>
 Surprise, Surprise! was developed as a part of the Creative Coding course at Politecnico di Milano.
  
 Professors: Michele Mauri, Andrea Benedetti
