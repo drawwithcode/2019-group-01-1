@@ -16,8 +16,10 @@ We found a recurring problem in online space: the total freedom of the user to s
 As a result we decided to create a space in which people could develop a higher sensibility through the expression of their emotions. The app is also Christmas themed because its purpose is very similar to the attitude people feel thanks to the Christmas atmosphere of kindness and gratefulness.
 
 ## The Project  
-The interface of the app consists of a map in which the user has a limited possibility to move around; the user will also be able to leave some colorful packets around, with a special content hidden inside, which could be found and collected by other users using the app in the same area.
-
+The interface of the app consists of a map in which the user has a limited possibility to move around; the user will also be able to leave some colorful packets around, with a special content hidden inside, which could be found and collected by other users using the app in the same area.  
+  
+  ![alt tag](../master/links/1.jpg)
+  
 ## Code challenges
 From a coding point of view, having so many interactions based on the smartphone movements.
 We tried to create different canvases, but weren’t able to upload the geolocation on the presets, as it not possible to have a preload function inside multiple canvasses. So we decided to use an if cycle to move from an interaction to another.  
