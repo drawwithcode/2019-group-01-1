@@ -14,8 +14,8 @@ c. [The User Challenge](#the-user-challenge)<br>
 d. [The Gifts](#the-gifts)<br>
 2. [The Interface](#the-interface)<br>
 3. [The Code](#the-code)<br>
-4. [The Tools](#the-tools)<br>
-5. [The Team](#the-team)<br>
+a. [The Tools](#the-tools)<br>
+4. [The Team](#the-team)<br>
 
 ## Project Idea  
 The instructions for the group project of the Creative Coding course were to create an online space in which users could interact with each other.  
