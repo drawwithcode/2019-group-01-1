@@ -7,7 +7,7 @@ Surprise, Surprise! was developed as a part of the Creative Coding course at Pol
 Professors: Michele Mauri, Andrea Benedetti
 
 ## Table of Contents
-1. [Project Idea](#project-idea)
+1. [Project Idea](#project-idea)<br>
 a. [How does it work?](#how-does-it-work?)<br>
 b. [The Inspiration](#the-inspiration)<br>
 c. [The User Challenge](#the-user-challenge)<br>
