@@ -40,7 +40,7 @@ Every time he reconnects he will have to start over.
 ## The Gifts
 ![alt tag](../master/links/presents.gif)
 
-The user will choose between three emojis to express his mood; in the packets there will be a short message representing the mood of the person who left it and an illustration, Christmas-themed, randomly chosen between five different ones. The one who will find the packets will get the chance to read the emotions of the person around him and in the meantime to collect the illustrations.
+The user will choose between three emojis to express his mood; in the packets there will be a short message representing the mood of the person who left it and an illustration, Christmas-themed, randomly chosen between five different ones. The one who will find the packets will get the chance to read the emotions of the people around him while collecting the illustrations.
 
 ## The Interface  
 The WebApp works only on mobile platforms and in portrait mode.
