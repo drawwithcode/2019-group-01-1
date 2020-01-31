@@ -48,8 +48,9 @@ The user will choose between three emojis to express his mood; in the packets th
 
 ## The Interface  
 The WebApp works only on mobile platforms and in portrait mode.
-
-![alt tag](../master/links/desktop.png)
+<p align="center">
+  <img width="600" height="300" src="../master/links/desktop.gif">
+</p>
 
 In the map in  the user has a limited possibility to move around. He can move the map, but he can't zoom back over a certain value.
 
