@@ -31,12 +31,12 @@ The user can through the map in any directions, but he will have some restrictio
 Our main inspirations have been the social-detox apps that help the users reduce the time spent on social networks. Most of these apps mute the notifications or reward the users in different ways by using less the smartphone.
 
 ## The User Challenge
-(../master/links/challenges.gif)
+![alt tag](../master/links/challenges.gif)
 Every time the user access the app, he will have the chance to collect all the different illustrations and to leave the packets around (so other users can collect them and the game can proceed) until he stays on the website.
 Every time he reconnects he will have to start over.
 
 ## The Gifts
-(../master/links/presents.gif)
+![alt tag](../master/links/presents.gif)
 The user will choose between three emojis to express his mood; in the packets there will be a short message representing the mood of the person who left it and an illustration, Christmas-themed, randomly chosen between five different ones. The one who will find the packets will get the chance to read the emotions of the person around him and in the meantime to collect the illustrations.
 
 ## The Interface  
