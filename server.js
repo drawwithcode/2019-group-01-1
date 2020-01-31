@@ -23,42 +23,34 @@ function newConnection(socket){
 	//when a new connection is created, print its id
 	console.log('socket:', socket.id);
 
-	//define what to do on different kind of messages
+	//When a user closes a present start closePresent callback function
 	socket.on('closepresent', closePresent);
 
-	//Update json
+	//When a user leaves a present start jsonUpdate callback function
 	socket.on('present', jsonUpdate);
 
 	function closePresent(stopIcon){
-		var fs = require('fs');
-		var m = JSON.parse(fs.readFileSync('./public/presents.json').toString());
-		m.regali[stopIcon.index].show =  1;
-		fs.writeFile('public/presents.json', JSON.stringify(m, null, 2), finished);
-		socket.broadcast.emit('Closing', stopIcon);
+		var fs = require('fs'); //Call FileSystem API to read and modify JSON file
+		var m = JSON.parse(fs.readFileSync('./public/presents.json').toString()); //Get text of JSON on a variable
+		m.regali[stopIcon.index].show =  1; //Change iconshow variable inside JSON at the index of the closed present
+		fs.writeFile('public/presents.json', JSON.stringify(m, null, 2), finished); //Write it in the JSON
+		socket.broadcast.emit('Closing', stopIcon); //Send to all clients the update
 	}
 
 	function jsonUpdate(request){
-		var testo = request.body;
-    var fs = require('fs');
+		var testo = request.body; //Put the informations of the present that a user sent on the testo variable
+    var fs = require('fs'); //As before
 
-
+		//Read JSON file
 		fs.readFile('./public/presents.json', 'utf8', function readFileCallback(err, data) {
         if (err) {
-          console.log(err);
+          console.log(err); //If the read produces an error say it on the console
         } else {
-          //now it an object
-          //add some data
-          //convert it back to json
-          obj = JSON.parse(data);
-          obj.regali.push(testo)
-          json = JSON.stringify(obj, null, 2);
-          //console.log(json)
-          fs.writeFile('./public/presents.json', json, finished);
-
-					socket.broadcast.emit('presentBroadcast', request);
-          // write it back
-
-          //console.log(data);
+          obj = JSON.parse(data); //Convert the JSON into an object
+          obj.regali.push(testo) //Put the present informations as a new entry inside the objects
+          json = JSON.stringify(obj, null, 2); //Convert the object into a string
+          fs.writeFile('./public/presents.json', json, finished); //Write new entry into JSON
+					socket.broadcast.emit('presentBroadcast', request); //Send to all clients the update
         }
       });
 	}
@@ -66,5 +58,3 @@ function newConnection(socket){
 
 function finished() {
 }
-
-console.log('node server is running')

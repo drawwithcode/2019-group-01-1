@@ -16,12 +16,12 @@ function preload(){
 }
 
 function setup(){
-  createCanvas(windowWidth,windowHeight);
+  createCanvas(windowWidth,windowHeight); //Create canvas
 }
 
 function draw(){
-  clear();
-  background("#b3f1f4");
+  clear(); //Refresh canvas
+  background("#b3f1f4"); //Set background to color
 
   //create distance variable for the Play button
   var d = dist(mouseX, mouseY, windowWidth/2-10, windowHeight/3-20);
@@ -36,6 +36,7 @@ function draw(){
   ellipse(windowWidth/2, windowHeight/3, height/5+20);
   fill("#d5004d");
   ellipse(windowWidth/2, windowHeight/3, height/5);
+  //Add animation on press
   if(mouseIsPressed && d < height/10){
     fill("#ff0160");
     ellipse(windowWidth/2, windowHeight/3, height/5);
@@ -74,7 +75,11 @@ function draw(){
   }
 }
 
-// snowflake class
+// =============================================================
+// =                          OBJECTS                          =
+// =============================================================
+
+//Snowflake Object
 function snowflake() {
   // initialize coordinates
   this.posX = 0;
@@ -110,6 +115,23 @@ function snowflake() {
 }
 
 // =============================================================
+// =                          UTILITY                          =
+// =============================================================
+
+this.touchMoved = function() {
+  return false;
+}
+
+//Ask permission on IOs s devices
+function touchEnded(event) {
+  DeviceOrientationEvent.requestPermission()
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
+
+// =============================================================
 // =                LOAD AND GOTO ANIMATION                    =
 // =============================================================
 
@@ -124,21 +146,4 @@ function animate(){
   setTimeout(function(){$("#b").addClass("animategoto");}, 400);
   setTimeout(function(){$("#g").addClass("animategoto");}, 600);
   setTimeout(function(){window.location.href = "game.html";}, 1600);
-}
-
-// ============================================
-// =                 GENERAL                  =
-// ============================================
-
-this.touchMoved = function() {
-  return false;
-}
-
-//Ask permission on IOs s devices
-function touchEnded(event) {
-  DeviceOrientationEvent.requestPermission()
-}
-
-function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
 }

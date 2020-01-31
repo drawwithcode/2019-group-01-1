@@ -14,12 +14,12 @@ function preload(){
 }
 
 function setup(){
-  createCanvas(windowWidth,windowHeight);
+  createCanvas(windowWidth,windowHeight); //Create Canvas
 }
 
 function draw(){
-  clear();
-  background("#b3f1f4");
+  clear(); //Refresh page
+  background("#b3f1f4"); //Set background to color
 
   //Show Illustration
   push();
@@ -53,7 +53,11 @@ function draw(){
   }
 }
 
-// snowflake class
+// =============================================================
+// =                          OBJECTS                          =
+// =============================================================
+
+//Snowflake Object
 function snowflake() {
   // initialize coordinates
   this.posX = 0;
@@ -85,4 +89,12 @@ function snowflake() {
     noStroke();
     ellipse(this.posX, this.posY, this.size);
   };
+}
+
+// =============================================================
+// =                          UTILITY                          =
+// =============================================================
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
 }
