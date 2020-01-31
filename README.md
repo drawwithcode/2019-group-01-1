@@ -22,7 +22,7 @@ The interface of the app consists of a map in which the user has a limited possi
   
 The user, clicking the button in the bottom part of the screen, will be able to leave some packets around. The user can choose three differents mood. 
 
-  ![alt tag](../master/links/mood.jpg)
+  ![alt tag](../master/links/mood)
   
 The user who leave the package, will see it in grey colours, while the other users will see it in a coloured version.
   
