@@ -255,7 +255,6 @@ function Regalo() {
       iconshow = 1;
     }
   }
-}
 
   //Variable holding the new Present informations
   var data = {
