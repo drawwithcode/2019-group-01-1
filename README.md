@@ -32,7 +32,7 @@ The user can through the map in any directions, but he will have some restrictio
   <img width="300" height="300" src="../master/links/challenges.gif">
 </p>
 
-Every time the user access the app, he will have the chance to collect all the different illustrations and to leave the packets around (so other users can collect them and the game can proceed) until he stays on the website.
+Every time the user access the app, he will have the chance to see all 5 the different illustrations and to leave the packets around (so other users can collect them and the game can proceed) until he leaves the website.
 Every time he reconnects he will have to start over.
 
 ## The Gifts
