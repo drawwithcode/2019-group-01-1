@@ -8,7 +8,7 @@ Professors: Michele Mauri, Andrea Benedetti
 
 ## Table of Contents
 1. [Project Idea](#project-idea)
-a. [How does it work?](#how-does-it-work?)
+a. [How does it work?](#how-does-it-work?)<br>
 b. [The Inspiration](#the-inspiration)<br>
 c. [The User Challenge](#the-user-challenge)<br>
 d. [The Gifts](#the-gifts)<br>
