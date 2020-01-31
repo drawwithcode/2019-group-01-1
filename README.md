@@ -10,9 +10,8 @@ Professors: Michele Mauri, Andrea Benedetti
 ## Table of Contents
 1. [Project Idea](#project-idea)<br>
 a. [How does it work?](#how-does-it-work)<br>
-b. [The Inspiration](#the-inspiration)<br>
-c. [The User Challenge](#the-user-challenge)<br>
-d. [The Gifts](#the-gifts)<br>
+b. [The User Challenge](#the-user-challenge)<br>
+c. [The Gifts](#the-gifts)<br>
 2. [The Interface](#the-interface)<br>
 3. [The Code](#the-code)<br>
 a. [The Tools](#the-tools)<br>
@@ -27,9 +26,6 @@ As a result we decided to create a space in which people could develop a higher 
 
 ## How does it work?
 The user can through the map in any directions, but he will have some restrictions: he won’t be able to zoom back over a certain value, to discourage the user from exploring the places on the man that are not strictly surrounding. The user can move on the map as he moves around in real life; through a button located in the bottom part of the scree he can leave some packets around, which could be opened from other users that find them while exploring the map. The user will be able to leave a content of his choice hidden inside the gifts.
-
-## The inspiration
-Our main inspirations have been the social-detox apps that help the users reduce the time spent on social networks. Most of these apps mute the notifications or reward the users in different ways by using less the smartphone.
 
 ## The User Challenge
 <p align="center">
