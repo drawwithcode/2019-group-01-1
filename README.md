@@ -18,7 +18,7 @@ As a result we decided to create a space in which people could develop a higher 
 ## The Project  
 The interface of the app consists of a map in which the user has a limited possibility to move around; the user will also be able to leave some colorful packets around, with a special content hidden inside, which could be found and collected by other users using the app in the same area.  
   
-  ![alt tag](../master/links/1.jpg)
+  ![alt tag](../master/links/steps.jpg)
   
 ## Code challenges
 From a coding point of view, having so many interactions based on the smartphone movements.
